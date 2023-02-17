@@ -22,25 +22,22 @@ class minHeap {
     delete(){
       this.heap[0] = this.heap[this.heap.length-1]
       this.heap.pop(this.heap.length-1)
-      this.heapifyDown()
+      this.heapifyDown(this.heap, this.heap.length, 0)
     }
     
-    heapifyDown() {
-     let idx = 0
-     while(this.leftIdx(idx) < this.heap.length){
-      let left = this.leftIdx(idx)
-      let right = this.rightIdx(idx)
-      let small = left
-  
-      if(right>this.heap.length && this.heap[right]<this.heap[small]){
-        small = right
+     heapifyDown(array, heapSize, index) {
+      let smallest = index;
+      const left = this.leftIdx(index)
+      const right = this.rightIdx(index)
+    
+      if (left < heapSize && array[left] < array[smallest]) smallest = left;
+    
+      if (right < heapSize && array[right] < array[smallest]) smallest = right;
+    
+      if (smallest !== index) {
+        [array[index], array[smallest]] = [array[smallest], array[index]];
+        this.heapifyDown(array, smallest, heapSize);
       }
-  
-      if(this.heap[small] > this.heap[idx]) break;
-  
-      [this.heap[small],this.heap[idx]] =[this.heap[idx],this.heap[small]] 
-      idx = small
-     }
     }
   
     parentIdx(idx) {
@@ -56,8 +53,7 @@ class minHeap {
     }
   
     display(){
-      let i=0
-      for(i in this.heap){
+      for(let i in this.heap){
         console.log(this.heap[i]);
       }
     }
@@ -65,10 +61,5 @@ class minHeap {
   
   const h = new minHeap()
   h.insert([10,9,8,7,5])
-  // h.insert(10)
-  // h.insert(9)
-  // h.insert(8)
-  // h.insert(7)
-  // h.insert(5)
   h.delete()
   h.display()
