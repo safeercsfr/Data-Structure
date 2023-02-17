@@ -31,6 +31,7 @@ class binarySearchTree {
     }
   }
 
+
   search(root, val) {
     if (!root) return false;
     else {
@@ -112,6 +113,33 @@ class binarySearchTree {
     }
     return root
   }
+
+  height() {
+    return this._heightNode(this.root);
+  }
+
+  _heightNode(node) {
+    if (node === null) {
+      return 0;
+    } else {
+      const leftHeight = this._heightNode(node.left);
+      const rightHeight = this._heightNode(node.right);
+      return Math.max(leftHeight, rightHeight) + 1;
+    }
+  }
+  
+  validate(root = this.root,min = -Infinity, max = Infinity) {
+    if (!root) return true;
+    
+    if (root.data < min || root.data > max) {
+      return false;
+    }
+    
+    return(
+      this.validate(root.left, min, root.data ) && 
+      this.validate(root.right, root.data, max)
+    )
+  }
 }
 
 const bst = new binarySearchTree();
@@ -119,6 +147,8 @@ bst.insert(10);
 bst.insert(5);
 bst.insert(15);
 bst.insert(3);
+console.log('height:',bst.height());
+console.log('validate:',bst.validate(bst.root));
 // bst.insert(7);
 
 // console.log("PRE ORDER");
