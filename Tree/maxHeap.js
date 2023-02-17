@@ -63,12 +63,14 @@ class maxHeap {
   }
 }
 
-const h = new minHeap()
+const h = new maxHeap()
 h.insert([10,9,8,7,5])
-// h.insert(10)
-// h.insert(9)
-// h.insert(8)
-// h.insert(7)
-// h.insert(5)
+h.insert(10)
+h.insert(9)
+h.insert(8)
+h.insert(7)
+h.insert(5)
+h.display()
+console.log('after delete');
 h.delete()
 h.display()

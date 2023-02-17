@@ -149,16 +149,16 @@ bst.insert(15);
 bst.insert(3);
 console.log('height:',bst.height());
 console.log('validate:',bst.validate(bst.root));
-// bst.insert(7);
+bst.insert(7);
 
-// console.log("PRE ORDER");
-// bst.preOrder(bst.root);
+console.log("PRE ORDER");
+bst.preOrder(bst.root);
 
-// console.log("IN ORDER");
-// bst.inOrder(bst.root);
+console.log("IN ORDER");
+bst.inOrder(bst.root);
 
-// console.log("POST ORDER");
-// bst.postOrder(bst.root);
+console.log("POST ORDER");
+bst.postOrder(bst.root);
 
 console.log("BFS");
 bst.levelOrder(bst.root);
@@ -166,15 +166,15 @@ bst.delete(15);
 console.log('AFTER');
 bst.levelOrder(bst.root);
 
-// console.log("MIN");
-// console.log(bst.min(bst.root));
+console.log("MIN");
+console.log(bst.min(bst.root));
 
-// console.log("MAX");
-// console.log(bst.max(bst.root));
+console.log("MAX");
+console.log(bst.max(bst.root));
 
-// console.log("empty", bst.isEmpty());
-// console.log("value founded=", bst.search(bst.root, 10));
-// console.log("value founded=", bst.search(bst.root, 20));
-// console.log("value founded=", bst.search(bst.root, 40));
-// console.log("value founded=", bst.search(bst.root, 30));
-// console.log("value founded=", bst.search(bst.root, 50));
+console.log("empty", bst.isEmpty());
+console.log("value founded=", bst.search(bst.root, 10));
+console.log("value founded=", bst.search(bst.root, 20));
+console.log("value founded=", bst.search(bst.root, 40));
+console.log("value founded=", bst.search(bst.root, 30));
+console.log("value founded=", bst.search(bst.root, 50));

@@ -43,4 +43,19 @@ class TrieNode {
       return true;
     }
   }
+ 
   
+  const trie = new Trie();
+
+// Test insert method
+trie.insert('safeer');
+trie.insert('cars');
+trie.insert('bike');
+
+// Test search method
+console.log(trie.search('safeer')); 
+console.log(trie.search('saleel')); 
+
+// Test startsWith method
+console.log(trie.startsWith('saf'));
+console.log(trie.startsWith('sal')); 
