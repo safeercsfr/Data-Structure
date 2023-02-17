@@ -1,65 +1,55 @@
 class minHeap {
-    constructor() {
-      this.heap = [];
+  constructor() {
+    this.heap = [];
+  }
+  insert(arr) {
+    for (let i in arr) {
+      this.heap.push(arr[i]);
+      this.heapifyUp();
     }
-    
-    insert(val) {
-      for(let i=0;i<val.length;i++){
-        this.heap.push(val[i]);
-        this.heapifyUp();
-      }
-    }
-    
-    heapifyUp(){
-      let idx = this.heap.length-1
-      while(idx>0 && this.heap[this.parentIdx(idx)]>this.heap[idx]){
-        let par = this.parentIdx(idx);
-        [this.heap[par],this.heap[idx]] =  [this.heap[idx],this.heap[par]]
-        idx = par
-      }
-    }
-  
-    delete(){
-      this.heap[0] = this.heap[this.heap.length-1]
-      this.heap.pop(this.heap.length-1)
-      this.heapifyDown(this.heap, this.heap.length, 0)
-    }
-    
-     heapifyDown(array, heapSize, index) {
-      let smallest = index;
-      const left = this.leftIdx(index)
-      const right = this.rightIdx(index)
-    
-      if (left < heapSize && array[left] < array[smallest]) smallest = left;
-    
-      if (right < heapSize && array[right] < array[smallest]) smallest = right;
-    
-      if (smallest !== index) {
-        [array[index], array[smallest]] = [array[smallest], array[index]];
-        this.heapifyDown(array, smallest, heapSize);
-      }
-    }
-  
-    parentIdx(idx) {
-      return Math.floor((idx - 1) / 2)
-    }
-    
-    leftIdx(idx) {
-      return 2 * idx + 1;
-    }
-  
-    rightIdx(idx) {
-      return 2 * idx + 2;
-    }
-  
-    display(){
-      for(let i in this.heap){
-        console.log(this.heap[i]);
-      }
+    return this.heap;
+  }
+
+  heapifyUp(i = this.heap.length - 1) {
+    if (i <= 0) return;
+    const heap = this.heap;
+    const para = this.parentIdx(i);
+    if (heap[para] > heap[i]) [heap[i], heap[para]] = [heap[para], heap[i]];
+    this.heapifyUp(para);
+  }
+
+  delete() {
+    let arr = this.heap;
+    arr[0] = arr[arr.length - 1];
+    arr.pop(arr.length - 1);
+    this.heapifyDown(arr, arr.length, 0);
+    return arr;
+  }
+  heapifyDown(arr, n, i) {
+    let min = i;
+    let left = this.leftIdx(i);
+    let right = this.rightIdx(i);
+
+    if (left < n && arr[min] > arr[left]) min = left;
+    if (right < n && arr[min] > arr[right]) min = right;
+
+    if (min !== i) {
+      [arr[i], arr[min]] = [arr[min], arr[i]];
+      this.heapifyDown(arr, n, min);
     }
   }
-  
-  const h = new minHeap()
-  h.insert([10,9,8,7,5])
-  h.delete()
-  h.display()
+
+  leftIdx(i) {
+    return 2 * i + 1;
+  }
+  rightIdx(i) {
+    return 2 * i + 2;
+  }
+  parentIdx(i) {
+    return Math.floor((i - 1) / 2);
+  }
+}
+
+const h = new minHeap();
+console.log(h.insert([5, 43, 22, 45, 3, 2]));
+console.log(h.delete());
