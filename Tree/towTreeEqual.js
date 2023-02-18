@@ -31,3 +31,4 @@ tree2.left.right = new TreeNode(5);
 let result = isSameTree(tree1, tree2);
 
 console.log(result); // true
+ 

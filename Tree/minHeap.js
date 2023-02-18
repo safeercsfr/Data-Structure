@@ -25,6 +25,7 @@ class minHeap {
     this.heapifyDown(arr, arr.length, 0);
     return arr;
   }
+  
   heapifyDown(arr, n, i) {
     let min = i;
     let left = this.leftIdx(i);
